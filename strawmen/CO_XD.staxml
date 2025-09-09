@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+ <FDSNStationXML xmlns="http://www.fdsn.org/xml/station/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:iris="http://www.fdsn.org/xml/station/1/iris" xsi:schemaLocation="http://www.fdsn.org/xml/station/1 http://www.fdsn.org/xml/station/fdsn-station-1.1.xsd" schemaVersion="1.1">
+  <Source>IRIS-DMC</Source>
+  <Sender>IRIS-DMC</Sender>
+  <Module>IRIS WEB SERVICE: fdsnws-station | version: 1.1.52</Module>
+  <ModuleURI>https://service.iris.edu/fdsnws/station/1/query?net=CO,XD&amp;station=GOMA,BIRD&amp;level=station&amp;format=xml&amp;includecomments=true&amp;nodata=404</ModuleURI>
+  <Created>2025-09-09T15:36:31.7855</Created>
+  <Network code="CO" startDate="1987-01-01T00:00:00.0000" restrictedStatus="open">
+   <Description>South Carolina Seismic Network (SCSN)</Description>
+   <Identifier type="DOI">10.7914/SN/CO
+   </Identifier>
+   <TotalNumberStations>19</TotalNumberStations>
+   <SelectedNumberStations>1</SelectedNumberStations>
+   <Station code="BIRD" startDate="2010-08-25T00:00:00.0000" restrictedStatus="open" iris:alternateNetworkCodes="_CEUSN,.CEUSN-CONTRIB,.GREG,_REALTIME,.UNRESTRICTED,_US-REGIONAL">
+    <Latitude>34.645</Latitude>
+    <Longitude>-80.4615</Longitude>
+    <Elevation>132.0</Elevation>
+    <Site>
+     <Name>Birdtown, Kershaw, SC, USA</Name>
+     <County>Kershaw</County>
+     <Region>SC</Region>
+     <Country>USA</Country>
+    </Site>
+    <CreationDate>2010-08-25T00:00:00.0000</CreationDate>
+    <TotalNumberChannels>65</TotalNumberChannels>
+    <SelectedNumberChannels>0</SelectedNumberChannels>
+   </Station>
+  </Network>
+  <Network code="XD" startDate="1994-01-01T00:00:00.0000" endDate="1995-12-31T23:59:59.9999" restrictedStatus="open">
+   <Description>Seismic investigations of the Lithospheric Structure of the Tanzanian Craton (Tanzania)</Description>
+   <Identifier type="DOI">10.7914/SN/XD_1994
+   </Identifier>
+   <TotalNumberStations>21</TotalNumberStations>
+   <SelectedNumberStations>1</SelectedNumberStations>
+   <Station code="GOMA" startDate="1994-06-02T00:00:00.0000" endDate="1995-06-03T00:00:00.0000" restrictedStatus="open" iris:alternateNetworkCodes="_PASSCAL,.UNRESTRICTED">
+    <Latitude>-4.8392</Latitude>
+    <Longitude>29.692699</Longitude>
+    <Elevation>880.0</Elevation>
+    <Site>
+     <Name>-</Name>
+    </Site>
+    <CreationDate>1994-06-02T00:00:00.0000</CreationDate>
+    <TotalNumberChannels>12</TotalNumberChannels>
+    <SelectedNumberChannels>0</SelectedNumberChannels>
+   </Station>
+  </Network>
+ </FDSNStationXML>
