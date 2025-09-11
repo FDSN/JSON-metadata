@@ -21,23 +21,25 @@ class JsonApi(MostBasic):
 
     def createNetwork(self, xmlnetwork):
         basicnetwork=  super().createNetwork(xmlnetwork)
+        sid = createNetworkSid(xmlnetwork)
         network = {
             "type": "network",
-            "id": createNetworkSid(xmlnetwork),
+            "id": f"{sid}",
             "attributes": basicnetwork
         }
         return network
     def createStation(self, xmlstation, xmlnetwork):
         basicstation=  super().createStation(xmlstation, xmlnetwork)
+        sid = createStationSid(xmlstation, xmlnetwork)
         station = {
             "type": "station",
-            "id": createStationSid(xmlstation, xmlnetwork),
+            "id": f"{sid}",
             "attributes": basicstation,
             "relationships": {
                 "network": {
                     "data": {
                         "type": "network",
-                        "id": createNetworkSid(xmlnetwork)
+                        "id": f"{sid.networkSourceId()}"
                     }
                 }
             }

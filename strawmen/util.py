@@ -4,32 +4,37 @@ from lxml import etree
 import json
 import re
 from abc import ABC, abstractmethod
+import simplemseed
 
 
 STAXML_NS="http://www.fdsn.org/xml/station/1"
 
-TEMP_NET_PATTERN = re.compile("[\dXYZ][A-Z\d]")
-
 def createNetworkSid(netxml):
+    if netxml.get("sourceID") is not None:
+        return simplemseed.FDSNSourceId.parse(netxml.get("sourceID"))
     code = netxml.get("code")
-    sid = f"FDSN:{code}"
-    if TEMP_NET_PATTERN.fullmatch(code):
-        sid += netxml.get("startDate")[0:4]
+    sid = simplemseed.NetworkSourceId(code)
+    if sid.isSeedTempNet():
+        code += netxml.get("startDate")[0:4]
+        sid = simplemseed.NetworkSourceId(code)
     return sid
 
 def createStationSid(xmlstation, xmlnetwork):
+    if xmlstation.get("sourceID") is not None:
+        return simplemseed.FDSNSourceId.parse(xmlstation.get("sourceID"))
     code = xmlstation.get("code")
     netSid = createNetworkSid(xmlnetwork)
     sid = f"{netSid}_{code}"
-    return sid
+    return simplemseed.FDSNSourceId.parse(sid)
 
 def createChannelSid(xmlchannel, xmlstation, xmlnetwork):
-    code = xmlstation.get("code")
-    locCode = xmlnetwork.get("locationCode")
+    if xmlchannel.get("sourceID") is not None:
+        return simplemseed.FDSNSourceId.parse(xmlchannel.get("sourceID"))
+    code = xmlchannel.get("code")
+    locCode = xmlchannel.get("locationCode")
     staSid = createStationSid(xmlstation, xmlnetwork)
     sid = f"{staSid}_{locCode}_{code[0]}_{code[1]}_{code[2]}"
-    return sid
-
+    return simplemseed.FDSNSourceId.parse(sid)
 
 class AbstractStationJson(ABC):
     @abstractmethod
@@ -50,15 +55,16 @@ class AbstractStationJson(ABC):
             tag = etree.QName(child)
             if tag.namespace == STAXML_NS:
                 if tag.localname == "Identifier":
-                    net["identifier"] = child.text
-
+                    net["identifier"] = {
+                            "type": child.get("type"),
+                            "id": child.text.strip()
+                        }
                 if tag.localname == "Description":
-                    net["description"] = child.text
+                    net["description"] = child.text.strip()
                 if tag.localname == "TotalNumberStations":
                     net["totalNumberStations"] = child.text
                 if tag.localname == "SelectedNumberStations":
                     net["selectedNumberStations"] = child.text
-
             else:
                 print(f"Non-staml namespace element found: {tag.text}")
         return net
