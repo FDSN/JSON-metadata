@@ -1,0 +1,115 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "fdsn": "https://webservices.example.org/fdsn/terms#",
+    "id": "https://webservices.example.org/id/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "org": "http://www.w3.org/ns/org#",
+    "time": "http://www.w3.org/2006/time#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "schema": "http://schema.org/",
+    "wgs": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "unit": "http://qudt.org/vocab/unit/",
+    "networks": {
+      "@id": "@graph",
+      "@container": "@set"
+    },
+    "Network": "fdsn:Network",
+    "SeismicDataProvider": "fdsn:SeismicDataProvider",
+    "DataCenter": "fdsn:DataCenter",
+    "Station": "fdsn:Station",
+    "Comment": "fdsn:Comment",
+    "operatedBy": {
+      "@id": "fdsn:operatedBy",
+      "@type": "@id"
+    },
+    "servesNetwork": {
+      "@id": "fdsn:servesNetwork",
+      "@type": "@id"
+    },
+    "hasService": {
+      "@id": "fdsn:hasService",
+      "@type": "@id"
+    },
+    "operationalPeriod": {
+      "@id": "fdsn:operationalPeriod",
+      "@type": "@id"
+    },
+    "hasStation": {
+      "@id": "fdsn:hasStation",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "memberOfNetwork": {
+      "@id": "fdsn:memberOfNetwork",
+      "@type": "@id"
+    },
+    "hasComment": {
+      "@id": "fdsn:hasComment",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "sourceId": {
+      "@id": "fdsn:sourceId",
+      "@type": "@id"
+    },
+    "alternateCode": "fdsn:alternateCode",
+    "historicalCode": "fdsn:historicalCode",
+    "hasAccessStatus": {
+      "@id": "fdsn:hasAccessStatus",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "totalNumberStations": "fdsn:TotalNumberStations",
+    "selectedNumberStations": "fdsn:SelectedNumberStations",
+    "commentText": "fdsn:commentText",
+    "commentSubject": "fdsn:commentSubject",
+    "commentId": "fdsn:commentId",
+    "commentStart": {
+      "@id": "fdsn:commentStart",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "commentEnd": {
+      "@id": "fdsn:commentEnd",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "open": "fdsn:Open",
+    "closed": "fdsn:Closed",
+    "partial": "fdsn:Partial",
+    "title": "dcterms:title",
+    "description": "dcterms:description",
+    "issued": {
+      "@id": "dcterms:issued",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "created": {
+      "@id": "dcterms:created",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "modified": {
+      "@id": "dcterms:modified",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "identifier": "dcterms:identifier",
+    "references": {
+      "@id": "dcterms:references",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "publisher": {
+      "@id": "dcterms:publisher",
+      "@type": "@id"
+    },
+    "rights": "dcterms:rights",
+    "license": {
+      "@id": "dcterms:license",
+      "@type": "@id"
+    },
+    "sameAs": {
+      "@id": "owl:sameAs",
+      "@type": "@id"
+    }
+  }
+}
