@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FDSNStationXML xmlns="http://www.fdsn.org/xml/station/1" schemaVersion="1.0">
+  <Network code="ZZ" startDate="2010-01-01T00:00:00Z" restrictedStatus="open" sourceID="https://doi.org/10.13127/SD/ZZ">
+    <Description>Example Network ZZ</Description>
+    <TotalNumberStations>1</TotalNumberStations>
+    <SelectedNumberStations>1</SelectedNumberStations>
+    <Station code="AAA" startDate="2010-01-01T00:00:00Z" sourceID="https://doi.org/10.9999/ZZ.AAA">
+      <Site><Name>Example Site</Name></Site>
+      <Latitude>42.35</Latitude>
+      <Longitude>13.40</Longitude>
+      <Elevation>0.5</Elevation>
+    </Station>
+  </Network>
+</FDSNStationXML>
