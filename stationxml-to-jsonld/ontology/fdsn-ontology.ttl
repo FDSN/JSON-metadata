@@ -1,0 +1,423 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fdsn: <https://webservices.example.org/fdsn/terms#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@base <https://webservices.example.org/fdsn/terms#> .
+
+<https://webservices.example.org/fdsn/terms#> rdf:type owl:Ontology ;
+                                               dcterms:creator "FDSN JSON-LD/OWL working draft" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2006/time#hasBeginning
+time:hasBeginning rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2006/time#inXSDDateTime
+time:inXSDDateTime rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/org#Site
+org:Site rdf:type owl:AnnotationProperty ;
+         rdfs:subPropertyOf rdfs:comment .
+
+
+###  https://www.w3.org/ns/org#Site
+<https://www.w3.org/ns/org#Site> rdf:type owl:AnnotationProperty ;
+                                 rdfs:subPropertyOf dcterms:creator .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/dc/terms/publisher
+dcterms:publisher rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/dc/terms/references
+dcterms:references rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/2002/07/owl#sameAs
+owl:sameAs rdf:type owl:ObjectProperty .
+
+
+###  https://webservices.example.org/fdsn/terms#hasAccessStatus
+fdsn:hasAccessStatus rdf:type owl:ObjectProperty ;
+                     rdfs:domain fdsn:Network ;
+                     rdfs:range fdsn:AccessStatus ;
+                     rdfs:comment """Access status of a Network. Use one of fdsn:Open, fdsn:Closed, fdsn:Partial."""@en ;
+                     rdfs:label """has access status"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#hasComment
+fdsn:hasComment rdf:type owl:ObjectProperty ;
+                rdfs:domain fdsn:Network ;
+                rdfs:range fdsn:Comment ;
+                rdfs:comment """Associates a Network with 0..n comments carrying free text and optional period of validity."""@en ;
+                rdfs:label """has comment"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#hasService
+fdsn:hasService rdf:type owl:ObjectProperty ;
+                rdfs:domain fdsn:DataCenter ;
+                rdfs:range dcat:DataService ;
+                rdfs:comment """Associates a DataCenter with one of its data services (e.g., FDSN web services)."""@en ;
+                rdfs:label """has service"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#hasStation
+fdsn:hasStation rdf:type owl:ObjectProperty ;
+                owl:inverseOf fdsn:memberOfNetwork ;
+                rdfs:domain fdsn:Network ;
+                rdfs:range fdsn:Station ;
+                rdfs:comment """Connects a Network to one of its Stations."""@en ;
+                rdfs:label """has station"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#memberOfNetwork
+fdsn:memberOfNetwork rdf:type owl:ObjectProperty ;
+                     rdfs:domain fdsn:Station ;
+                     rdfs:range fdsn:Network ;
+                     rdfs:comment """Connects a Station to the Network it belongs to."""@en ;
+                     rdfs:label """member of network"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#operatedBy
+fdsn:operatedBy rdf:type owl:ObjectProperty ;
+                owl:inverseOf fdsn:operatesNetwork ;
+                rdfs:domain fdsn:Network ;
+                rdfs:range fdsn:SeismicDataProvider ;
+                rdfs:comment """Connects a Network to the SeismicDataProvider that operates it."""@en ;
+                rdfs:label """operated by"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#operatesNetwork
+fdsn:operatesNetwork rdf:type owl:ObjectProperty ;
+                     rdfs:domain fdsn:SeismicDataProvider ;
+                     rdfs:range fdsn:Network ;
+                     rdfs:comment """Connects a SeismicDataProvider to the networks it operates."""@en ;
+                     rdfs:label """operates network"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#operationalPeriod
+ Applicable to networks, stations, and other assets."""@en ,
+                                    """The time interval during which the resource was operational."""@en ;
+                       rdfs:label """operational period"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#servesNetwork
+fdsn:servesNetwork rdf:type owl:ObjectProperty ;
+                   rdfs:domain fdsn:DataCenter ;
+                   rdfs:range fdsn:Network ;
+                   rdfs:comment """Connects a DataCenter to the Networks it serves/redistributes."""@en ;
+                   rdfs:label """serves network"""@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/identifier
+dcterms:identifier rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/rights
+dcterms:rights rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:DatatypeProperty .
+
+
+###  https://webservices.example.org/fdsn/terms#SelectedNumberStations
+fdsn:SelectedNumberStations rdf:type owl:DatatypeProperty ;
+                            rdfs:domain fdsn:Network ;
+                            rdfs:range xsd:integer ;
+                            rdfs:label """selected number of stations"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#TotalNumberStations
+fdsn:TotalNumberStations rdf:type owl:DatatypeProperty ;
+                         rdfs:domain fdsn:Network ;
+                         rdfs:range xsd:integer ;
+                         rdfs:label """total number of stations"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#alternateCode
+fdsn:alternateCode rdf:type owl:DatatypeProperty ;
+                   rdfs:domain <http://org.semanticweb.owlapi/error#Error1> ;
+                   rdfs:range xsd:string ;
+                   rdfs:label """alternate code"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#commentEnd
+fdsn:commentEnd rdf:type owl:DatatypeProperty ;
+                rdfs:domain fdsn:Comment ;
+                rdfs:range xsd:dateTime ;
+                rdfs:label """comment end"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#commentId
+fdsn:commentId rdf:type owl:DatatypeProperty ;
+               rdfs:domain fdsn:Comment ;
+               rdfs:range xsd:string ;
+               rdfs:label """comment identifier"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#commentStart
+fdsn:commentStart rdf:type owl:DatatypeProperty ;
+                  rdfs:domain fdsn:Comment ;
+                  rdfs:range xsd:dateTime ;
+                  rdfs:label """comment start"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#commentSubject
+fdsn:commentSubject rdf:type owl:DatatypeProperty ;
+                    rdfs:domain fdsn:Comment ;
+                    rdfs:range xsd:string ;
+                    rdfs:label """comment subject"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#commentText
+fdsn:commentText rdf:type owl:DatatypeProperty ;
+                 rdfs:domain fdsn:Comment ;
+                 rdfs:range xsd:string ;
+                 rdfs:label """comment text"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#historicalCode
+fdsn:historicalCode rdf:type owl:DatatypeProperty ;
+                    rdfs:domain <http://org.semanticweb.owlapi/error#Error3> ;
+                    rdfs:range xsd:string ;
+                    rdfs:label """historical code"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#sourceId
+fdsn:sourceId rdf:type owl:DatatypeProperty ;
+              rdfs:domain fdsn:Network ,
+                          fdsn:Station ;
+              rdfs:comment """FDSN SourceID for the resource (if represented as a literal IRI)."""@en ;
+              rdfs:label """source ID"""@en .
+
+
+###  https://www.w3.org/ns/org#Site
+<https://www.w3.org/ns/org#Site> rdf:type owl:DatatypeProperty .
+
+
+###  https://www.w3.org/ns/org#siteAddress
+<https://www.w3.org/ns/org#siteAddress> rdf:type owl:DatatypeProperty ;
+                                        rdfs:subPropertyOf <https://www.w3.org/ns/org#Site> .
+
+
+###  fdsn:operationalPeriod
+fdsn:operationalPeriod rdf:type owl:ObjectProperty ;
+    rdfs:label "operational period"@en ;
+    rdfs:comment "The time interval during which the resource was operational."@en ;
+    rdfs:range time:ProperInterval .
+
+#################################################################
+#    Classes
+#################################################################
+
+###  file:/home/stefano/gitwork/stationxml-to-jsonld/ontology/fdsn-ontology.ttl#operationalPeriod
+<file:/home/stefano/gitwork/stationxml-to-jsonld/ontology/fdsn-ontology.ttl#operationalPeriod> rdf:type owl:Class .
+
+
+###  file:/home/stefano/gitwork/stationxml-to-jsonld/ontology/fdsn-ontology.ttl#@type
+<file:/home/stefano/gitwork/stationxml-to-jsonld/ontology/fdsn-ontology.ttl#@type> rdf:type owl:Class ;
+                                                                                   rdfs:subClassOf <file:/home/stefano/gitwork/stationxml-to-jsonld/ontology/fdsn-ontology.ttl#operationalPeriod> .
+
+
+###  http://org.semanticweb.owlapi/error#Error1
+<http://org.semanticweb.owlapi/error#Error1> rdf:type owl:Class .
+
+
+###  http://org.semanticweb.owlapi/error#Error3
+<http://org.semanticweb.owlapi/error#Error3> rdf:type owl:Class .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#Resource
+rdfs:Resource rdf:type owl:Class .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class .
+
+
+###  http://www.w3.org/2006/time#Instant
+time:Instant rdf:type owl:Class .
+
+
+###  http://www.w3.org/2006/time#ProperInterval
+time:ProperInterval rdf:type owl:Class .
+
+
+###  http://www.w3.org/2006/time#hasBeginning
+time:hasBeginning rdf:type owl:Class ;
+                  rdfs:subClassOf <file:/home/stefano/gitwork/stationxml-to-jsonld/ontology/fdsn-ontology.ttl#operationalPeriod> .
+
+
+###  http://www.w3.org/ns/dcat#DataService
+dcat:DataService rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/org#Organization
+org:Organization rdf:type owl:Class .
+
+
+###  https://webservices.example.org/fdsn/terms#AccessStatus
+fdsn:AccessStatus rdf:type owl:Class ;
+                  rdfs:label """Access Status"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#Comment
+fdsn:Comment rdf:type owl:Class ;
+             rdfs:comment """A free-text comment with optional subject, identifier, and validity period."""@en ;
+             rdfs:label """Comment"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#DataCenter
+fdsn:DataCenter rdf:type owl:Class ;
+                rdfs:subClassOf org:Organization ;
+                dcterms:creator """""" ;
+                rdfs:comment """An organization that (re)distributes seismic data and metadata, possibly serving multiple networks."""@en ;
+                rdfs:label """Data Center"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#Network
+fdsn:Network rdf:type owl:Class ;
+             rdfs:comment """A seismic network described by FDSN Station metadata."""@en ;
+             rdfs:label """Network"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#SeismicDataProvider
+fdsn:SeismicDataProvider rdf:type owl:Class ;
+                         rdfs:subClassOf org:Organization ;
+                         rdfs:comment """An organization that operates seismic networks and provides data."""@en ;
+                         rdfs:label """Seismic Data Provider"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#Station
+fdsn:Station rdf:type owl:Class ;
+             rdfs:comment """""""A seismic station that belongs to a Network ;
+  rdfs:subClassOf wgs:SpatialThing ."""""""@en ;
+             rdfs:label """Station"""@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.co-ode.org/ontologies/ont.owl#IV
+<http://www.co-ode.org/ontologies/ont.owl#IV> rdf:type owl:NamedIndividual ,
+                                                       fdsn:Network ;
+                                              fdsn:hasAccessStatus fdsn:open ;
+                                              fdsn:operationalPeriod [ rdf:type time:ProperInterval ;
+                                                                       time:hasBeginning [ rdf:type time:Instant ;
+                                                                                           time:inXSDDateTime """1988-01-01T00:00:00Z"""^^xsd:dateTime
+                                                                                         ]
+                                                                     ] ;
+                                              dcterms:description """INGV Italian National Seismic Network"""@en ;
+                                              dcterms:identifier """https://doi.org/10.13127/SD/X0FXNH7QFY""" ;
+                                              fdsn:sourceId """https://webservices.example.org/id/FDSN:IV"""^^xsd:anyURI ;
+                                              rdfs:label """IV"""@en .
+
+
+###  https://creativecommons.org/licenses/by/4.0/
+<https://creativecommons.org/licenses/by/4.0/> rdf:type owl:NamedIndividual .
+
+
+###  https://webservices.example.org/fdsn/terms#
+<https://webservices.example.org/fdsn/terms#> rdf:type owl:NamedIndividual ;
+                                              dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+                                              dcterms:title """FDSN core ontology (strict skeleton from JSON-LD context)""" .
+
+
+###  https://webservices.example.org/fdsn/terms#Closed
+fdsn:Closed rdf:type owl:NamedIndividual ,
+                     skos:Concept ,
+                     fdsn:AccessStatus ;
+            skos:prefLabel """Closed"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#INGV
+fdsn:INGV rdf:type owl:NamedIndividual ,
+                   org:Organization ,
+                   fdsn:DataCenter ,
+                   fdsn:SeismicDataProvider ;
+          fdsn:operatesNetwork <http://www.co-ode.org/ontologies/ont.owl#IV> ;
+          <https://www.w3.org/ns/org#siteAddress> """Via di Vigna Murata 605, Roma IT"""@it ;
+          <https://www.w3.org/ns/org#Site> """Sede centrale""" .
+
+
+###  https://webservices.example.org/fdsn/terms#Open
+fdsn:Open rdf:type owl:NamedIndividual ,
+                   skos:Concept ,
+                   fdsn:AccessStatus ;
+          skos:prefLabel """Open"""@en .
+
+
+###  https://webservices.example.org/fdsn/terms#Partial
+fdsn:Partial rdf:type owl:NamedIndividual ,
+                      skos:Concept ,
+                      fdsn:AccessStatus ;
+             skos:prefLabel """Partial"@en .
+
+
+###  https://webservices.example.org/fdsn/terms#open
+fdsn:open rdf:type owl:NamedIndividual .
+
+
+###  https://webservices.example.org/id/station/IV:ACER#ACER
+<https://webservices.example.org/id/station/IV:ACER#ACER> rdf:type owl:NamedIndividual ,
+                                                                   fdsn:Station ;
+                                                          fdsn:hasAccessStatus fdsn:Open ;
+                                                          fdsn:memberOfNetwork <http://www.co-ode.org/ontologies/ont.owl#IV> .
+
+
