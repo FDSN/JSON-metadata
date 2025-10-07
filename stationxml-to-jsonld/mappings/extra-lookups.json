@@ -1,0 +1,10 @@
+{
+  "statusMap": {
+    "restricted": "fdsn:Closed",
+    "public": "fdsn:Open"
+  },
+  "YesNo": {
+    "Yes": "schema:True",
+    "No": "schema:False"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "iriPolicy": {
+    "baseId": "https://webservices.example.org/id/",
+    "networkIri": "${resourceBaseId}FDSN:${ICDM.Network.code}",
+    "stationIri": "${resourceBaseId}FDSN:${ICDM.Network.code}_${ICDM.Station.code}",
+    "resourceBaseId": "https://webservices.example.org/id/"
+  },
+  "classes": {
+    "Network": "fdsn:Network",
+    "Station": "fdsn:Station"
+  },
+  "networkMapping": {
+    "type": "fdsn:Network",
+    "id": "${networkIri}",
+    "where": {
+      "exists": [
+        "ICDM.Network.code"
+      ]
+    },
+    "properties": {
+      "dcterms:identifier": {
+        "when": "ICDM.Network.sourceId",
+        "from": "ICDM.Network.sourceId",
+        "type": "iriOrLiteral"
+      },
+      "fdsn:hasAccessStatus": {
+        "when": "ICDM.Network.restricted",
+        "from": "ICDM.Network.restricted",
+        "lookup": "statusMap"
+      },
+      "fdsn:operationalPeriod": {
+        "build": "period",
+        "args": [
+          "ICDM.Network.start",
+          "ICDM.Network.end"
+        ]
+      },
+      "fdsn:TotalNumberStations": {
+        "when": "ICDM.Network.totalStations",
+        "from": "ICDM.Network.totalStations",
+        "datatype": "xsd:integer"
+      },
+      "fdsn:SelectedNumberStations": {
+        "when": "ICDM.Network.selectedStations",
+        "from": "ICDM.Network.selectedStations",
+        "datatype": "xsd:integer"
+      }
+    }
+  },
+  "stationMapping": {
+    "type": "fdsn:Station",
+    "id": "${stationIri}",
+    "where": {
+      "exists": [
+        "ICDM.Station.code"
+      ]
+    },
+    "properties": {
+      "fdsn:memberOfNetwork": {
+        "fromIri": "${networkIri}"
+      },
+      "dcterms:identifier": {
+        "when": "ICDM.Station.sourceId",
+        "from": "ICDM.Station.sourceId",
+        "type": "iriOrLiteral"
+      },
+      "schema:name": {
+        "when": "ICDM.Station.name",
+        "from": "ICDM.Station.name"
+      },
+      "wgs:lat": {
+        "when": "ICDM.Station.latitude",
+        "from": "ICDM.Station.latitude",
+        "datatype": "xsd:decimal"
+      },
+      "wgs:long": {
+        "when": "ICDM.Station.longitude",
+        "from": "ICDM.Station.longitude",
+        "datatype": "xsd:decimal"
+      }
+    }
+  },
+  "lookups": {
+    "statusMap": {
+      "open": "fdsn:Open",
+      "closed": "fdsn:Closed",
+      "partial": "fdsn:Partial"
+    }
+  }
+}
