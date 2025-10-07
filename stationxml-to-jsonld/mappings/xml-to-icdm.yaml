@@ -1,0 +1,24 @@
+namespaces:
+  sta: "http://www.fdsn.org/xml/station/1"
+network:
+  path: ".//{http://www.fdsn.org/xml/station/1}Network"
+  fields:
+    code: "@code"
+    start: "@startDate"
+    end: "@endDate"
+    restricted: "@restrictedStatus"
+    sourceId: "@sourceID"
+    description: "sta:Description/text()"
+    totalStations: "sta:TotalNumberStations/text()"
+    selectedStations: "sta:SelectedNumberStations/text()"
+station:
+  path: ".//{http://www.fdsn.org/xml/station/1}Station"
+  fields:
+    code: "@code"
+    start: "@startDate"
+    end: "@endDate"
+    sourceId: "@sourceID"
+    name: "sta:Site/sta:Name/text()"
+    latitude: "sta:Latitude/text()"
+    longitude: "sta:Longitude/text()"
+    elevation: "sta:Elevation/text()"
