@@ -1,0 +1,246 @@
+{
+  "@context": "https://example.org/fdsn/context/station-metadata.jsonld",
+  "@graph": [
+    {
+      "@id": "FDSN:IV",
+      "@type": "Network",
+      "description": "Italian Seismic Network",
+      "restrictedStatus": "open",
+      "startDate": "1988-01-01T00:00:00Z",
+      "totalStations": 589,
+      "selectedStations": 1,
+      "identifiers": [
+        {
+          "value": "10.13127/SD/X0FXnH7QfY",
+          "type": "DOI"
+        },
+        {
+          "value": "N1"
+        }
+      ]
+    },
+    {
+      "@id": "FDSN:IV_ACATE",
+      "@type": "Station",
+      "memberOfNetwork": "FDSN:IV",
+      "stationName": "ACATE",
+      "lat": 37.02398,
+      "lon": 14.50064,
+      "elevation": 210,
+      "restrictedStatus": "open",
+      "startDate": "2019-02-28T05:59:00Z",
+      "creationDate": "2019-02-28T05:59:00",
+      "totalChannels": 6,
+      "selectedChannels": 6,
+      "identifiers": [
+        {
+          "value": "S7381"
+        }
+      ]
+    },
+    {
+      "@id": "FDSN:IV_ACATE__E_H_E",
+      "@type": "Channel",
+      "memberOfStation": "FDSN:IV_ACATE",
+      "identifiers": [
+        {
+          "value": "C82091"
+        }
+      ]
+    },
+    {
+      "@id": "FDSN:IV_ACATE__E_H_N",
+      "@type": "Channel",
+      "memberOfStation": "FDSN:IV_ACATE",
+      "identifiers": [
+        {
+          "value": "C82071"
+        }
+      ]
+    },
+    {
+      "@id": "FDSN:IV_ACATE__E_H_Z",
+      "@type": "Channel",
+      "memberOfStation": "FDSN:IV_ACATE",
+      "identifiers": [
+        {
+          "value": "C82081"
+        }
+      ]
+    },
+    {
+      "@id": "FDSN:IV_ACATE__H_N_E",
+      "@type": "Channel",
+      "memberOfStation": "FDSN:IV_ACATE",
+      "identifiers": [
+        {
+          "value": "C82121"
+        }
+      ]
+    },
+    {
+      "@id": "FDSN:IV_ACATE__H_N_N",
+      "@type": "Channel",
+      "memberOfStation": "FDSN:IV_ACATE",
+      "identifiers": [
+        {
+          "value": "C82101"
+        }
+      ]
+    },
+    {
+      "@id": "FDSN:IV_ACATE__H_N_Z",
+      "@type": "Channel",
+      "memberOfStation": "FDSN:IV_ACATE",
+      "identifiers": [
+        {
+          "value": "C82111"
+        }
+      ]
+    },
+    {
+      "@id": "FDSN:IV_ACATE__E_H_E/interval/20190228T055900Z-open",
+      "@type": "ChannelEpoch",
+      "describesChannel": "FDSN:IV_ACATE__E_H_E",
+      "lat": 37.02398,
+      "lon": 14.50064,
+      "elevation": 210,
+      "depth": 0,
+      "azimuth": 90,
+      "dip": 0,
+      "sampleRate": 100,
+      "restrictedStatus": "open",
+      "startDate": "2019-02-28T05:59:00Z",
+      "hasResponseSummary": "FDSN:IV_ACATE__E_H_E/interval/20190228T055900Z-open/response-summary"
+    },
+    {
+      "@id": "FDSN:IV_ACATE__E_H_N/interval/20190228T055900Z-open",
+      "@type": "ChannelEpoch",
+      "describesChannel": "FDSN:IV_ACATE__E_H_N",
+      "lat": 37.02398,
+      "lon": 14.50064,
+      "elevation": 210,
+      "depth": 0,
+      "azimuth": 0,
+      "dip": 0,
+      "sampleRate": 100,
+      "restrictedStatus": "open",
+      "startDate": "2019-02-28T05:59:00Z",
+      "hasResponseSummary": "FDSN:IV_ACATE__E_H_N/interval/20190228T055900Z-open/response-summary"
+    },
+    {
+      "@id": "FDSN:IV_ACATE__E_H_Z/interval/20190228T055900Z-open",
+      "@type": "ChannelEpoch",
+      "describesChannel": "FDSN:IV_ACATE__E_H_Z",
+      "lat": 37.02398,
+      "lon": 14.50064,
+      "elevation": 210,
+      "depth": 0,
+      "azimuth": 0,
+      "dip": -90,
+      "sampleRate": 100,
+      "restrictedStatus": "open",
+      "startDate": "2019-02-28T05:59:00Z",
+      "hasResponseSummary": "FDSN:IV_ACATE__E_H_Z/interval/20190228T055900Z-open/response-summary"
+    },
+    {
+      "@id": "FDSN:IV_ACATE__H_N_E/interval/20190228T055900Z-open",
+      "@type": "ChannelEpoch",
+      "describesChannel": "FDSN:IV_ACATE__H_N_E",
+      "lat": 37.02398,
+      "lon": 14.50064,
+      "elevation": 210,
+      "depth": 0,
+      "azimuth": 90,
+      "dip": 0,
+      "sampleRate": 200,
+      "restrictedStatus": "open",
+      "startDate": "2019-02-28T05:59:00Z",
+      "hasResponseSummary": "FDSN:IV_ACATE__H_N_E/interval/20190228T055900Z-open/response-summary"
+    },
+    {
+      "@id": "FDSN:IV_ACATE__H_N_N/interval/20190228T055900-open",
+      "@type": "ChannelEpoch",
+      "describesChannel": "FDSN:IV_ACATE__H_N_N",
+      "lat": 37.02398,
+      "lon": 14.50064,
+      "elevation": 210,
+      "depth": 0,
+      "azimuth": 0,
+      "dip": 0,
+      "sampleRate": 200,
+      "restrictedStatus": "open",
+      "startDate": "2019-02-28T05:59:00",
+      "hasResponseSummary": "FDSN:IV_ACATE__H_N_N/interval/20190228T055900-open/response-summary"
+    },
+    {
+      "@id": "FDSN:IV_ACATE__H_N_Z/interval/20190228T055900-open",
+      "@type": "ChannelEpoch",
+      "describesChannel": "FDSN:IV_ACATE__H_N_Z",
+      "lat": 37.02398,
+      "lon": 14.50064,
+      "elevation": 210,
+      "depth": 0,
+      "azimuth": 0,
+      "dip": -90,
+      "sampleRate": 200,
+      "restrictedStatus": "open",
+      "startDate": "2019-02-28T05:59:00",
+      "hasResponseSummary": "FDSN:IV_ACATE__H_N_Z/interval/20190228T055900-open/response-summary"
+    },
+    {
+      "@id": "FDSN:IV_ACATE__E_H_E/interval/20190228T055900Z-open/response-summary",
+      "@type": "ResponseSummary",
+      "sensorDescription": "LENNARTZ LE3D-5S",
+      "instrumentSensitivity": 503316000,
+      "instrumentSensitivityFrequency": 1,
+      "inputUnits": "M/S",
+      "outputUnits": "COUNTS"
+    },
+    {
+      "@id": "FDSN:IV_ACATE__E_H_N/interval/20190228T055900Z-open/response-summary",
+      "@type": "ResponseSummary",
+      "sensorDescription": "LENNARTZ LE3D-5S",
+      "instrumentSensitivity": 503316000,
+      "instrumentSensitivityFrequency": 1,
+      "inputUnits": "M/S",
+      "outputUnits": "COUNTS"
+    },
+    {
+      "@id": "FDSN:IV_ACATE__E_H_Z/interval/20190228T055900Z-open/response-summary",
+      "@type": "ResponseSummary",
+      "sensorDescription": "LENNARTZ LE3D-5S",
+      "instrumentSensitivity": 503316000,
+      "instrumentSensitivityFrequency": 1,
+      "inputUnits": "M/S",
+      "outputUnits": "COUNTS"
+    },
+    {
+      "@id": "FDSN:IV_ACATE__H_N_E/interval/20190228T055900Z-open/response-summary",
+      "@type": "ResponseSummary",
+      "sensorDescription": "NANOMETRICS TITAN",
+      "instrumentSensitivity": 320770,
+      "instrumentSensitivityFrequency": 1,
+      "inputUnits": "M/S**2",
+      "outputUnits": "COUNTS"
+    },
+    {
+      "@id": "FDSN:IV_ACATE__H_N_N/interval/20190228T055900-open/response-summary",
+      "@type": "ResponseSummary",
+      "sensorDescription": "NANOMETRICS TITAN",
+      "instrumentSensitivity": 320770,
+      "instrumentSensitivityFrequency": 1,
+      "inputUnits": "M/S**2",
+      "outputUnits": "COUNTS"
+    },
+    {
+      "@id": "FDSN:IV_ACATE__H_N_Z/interval/20190228T055900-open/response-summary",
+      "@type": "ResponseSummary",
+      "sensorDescription": "NANOMETRICS TITAN",
+      "instrumentSensitivity": 320770,
+      "instrumentSensitivityFrequency": 1,
+      "inputUnits": "M/S**2",
+      "outputUnits": "COUNTS"
+    }
+  ]
+}
